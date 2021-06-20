@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Вход</title>
+	<link rel="icon" href="favicon1.ico" type="image/x-icon">
+	<link href="CSS.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="up">
+		     <div class="logo">
+			     <img src="LOGO1.png">
+		     </div>
+	    </div>
+    </div>
+<div class="down">
+	<div class="okno">
+		<div class="text">
+			<p>Данный сайт предназначен для сотрудников сети магазина "ЧАПАЕВЪ".</p>
+			<p>Введите код подтверждения в поле ниже:</p>
+			<form class="wwod" name="Vxod" onsubmit="return validateForm()" method="POST" action="Site2.html">
+				<div>Код:</div>
+				<input type="password" name="Vvod" required="required">
+				<input class="knopka" type="submit" name="submit_btn" value="Вход">
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+<script>
+	function validateForm() {
+    var x = document.forms["Vxod"]["Vvod"].value;
+    if (x != "1111") {
+        alert("Неверный код!");
+        return false;
+    }
+} 
+</script>
+<footer>
+	<div>
+	     <p>ООО "ЧАПАЕВЪ"</p><br>
+	     <p>Выполнено Кирилловым Данилом</p>
+    </div>
+</footer>
+</body>
+</html>

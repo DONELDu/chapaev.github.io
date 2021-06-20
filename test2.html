@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1. Правила нахождения на рабочем месте. Тест.</title>
+    <link rel="icon" href="favicon1.ico" type="image/x-icon">
+    <link href="CSS.css" rel="stylesheet">
+    <script type = "text/javascript">
+        var answer;
+    </script>
+</head>
+<body class="text">
+    <div class="container">
+		<div class="up">
+		<div class="logo">
+			<img src="LOGO1.png">
+		</div>
+    </div>
+    </div>
+    <div class="down">
+    <div class="oknotest">
+    <h1 class="zagolovok">Тестирование по теме №1</h1>
+
+        <div class = "vopros">
+           <p>1. Что такое ротация по срокам?<br>
+             <input type = "radio" name=q1 onclick="qa.nowRight = 0">Что первое пришло, то последнее ушло<br>
+             <input type = "radio" name=q1 onclick="qa.nowRight = 1">Что первое пришло, то первое ушло<br>
+        </div>
+        <div class = "vopros">
+            <p>2. Для чего нужна ротация по срокам?<br>
+             <input type = "radio" name=q1 onclick="qa.nowRight = 1">Для сокращения убытков путём реализации более ранней продуции<br>
+             <input type = "radio" name=q1 onclick="qa.nowRight = 0">Для красоты<br>
+             <input type = "radio" name=q1 onclick="qa.nowRight = 0">Для увеличения прибыли путём реализации более дорогой продукции<br>
+         </div>
+         <div class = "vopros">
+            <p>3. Что такое планограмма?<br>
+             <input type = "radio" name=q1 onclick="qa.nowRight = 0">Затрудняюсь ответить<br>
+             <input type = "radio" name=q1 onclick="qa.nowRight = 0">Для реализации товаров с более ранним срокам и, тем самым, сокращением убытков<br>
+             <input type = "radio" name=q1 onclick="qa.nowRight = 1">Для систематизации разных категорий продукции внутри торгового зала<br>
+         </div>
+         <div class = "vopros">
+            <p>4. Для чего нужно размещать продукцию для детей на нижних полках?<br>
+             <input type = "radio" name=q1 onclick="qa.nowRight = 0">Для того, чтобы скрыть её от глаз взрослых<br>
+             <input type = "radio" name=q1 onclick="qa.nowRight = 1">Для того, чтобы продукция была на уровне глаз детей<br>
+             <input type = "radio" name=q1 onclick="qa.nowRight = 0">Продукция для детей чаще всего дешёвая, и занимать место сверху просто неразумно<br>
+         </div>
+         <div class = "vopros">
+            <p>5. Товары группируются по тематическим секторам для:<br>
+             <input type = "radio" name=q1 onclick="qa.nowRight = 0">реализации товаров с более ранним срокам и, тем самым, сокращением убытков<br>
+             <input type = "radio" name=q1 onclick="qa.nowRight = 1">упрощения ориентации покупателя в торговом зале<br>
+             <input type = "radio" name=q1 onclick="qa.nowRight = 0">систематизации разных категорий продуции внутри торгового зала<br>
+         </div>
+        <div class="wwod">
+        <input  type="button" value="Далее"   onclick="qa.dalee()" class="knopka" id="bla">
+        <a href="Site2.html" class="vozvrat">
+            <p>Выход в меню</p>
+        </a>
+        </div>
+    </div>
+        </div>
+
+        <script type = "text/javascript">
+            var qa = new QuestAnalizer();
+            function QuestAnalizer() {
+                var now = 0, result = false, rightCount = 0;
+                var vopros = document.querySelectorAll("div.vopros");
+                var allQCount = vopros.length;
+                vopros[now].style.display = "block";
+                this.dalee = function () {
+                    if (now >= allQCount-1) {
+                        now++;
+                        if (!result) {
+                            vopros[now - 1].style.display = "none"
+                            let bla = document.querySelector('#bla');
+                            bla.remove();
+                            printed = true;
+                            alert(`Вы ответили правильно на ${rightCount} вопросов из ${allQCount}`);
+                        } else {
+                            alert("Ваш результат на экране.");
+                        }
+                    } else {
+                        vopros[now].style.display = "none";
+                        now++;
+                        rightCount += this.nowRight;
+                        vopros[now].style.display = "block";
+                    }
+                }
+            }
+        </script>
+
+<footer>
+	<div>
+	     <p>ООО "ЧАПАЕВЪ"</p><br>
+	     <p>Выполнено Кирилловым Данилом</p>
+    </div>
+</footer>
+</body>
+</html>

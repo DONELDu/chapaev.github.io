@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="$_GET" action="action_handler.php" id="form">
+        <section class="table_1">
+            <table class="iksweb" name="checkbox">
+                <tbody>
+                    <tr>
+                        <td rowspan="3"><b>История компании «Mc donald's»</b>
+                            <h3 class="the">Кто основал компанию «Mc donald's»?</h3>   
+                            <section class="conteiner">
+                                <div class="checkbox">
+                                    <input type="checkbox" class="i-6" id="i6" value="0" name="formDoor[]">
+                                    <label for="i6" tabindex="12">Роналд Макдоналд</label>     
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" class="i-6" id="i7" value="0" name="formDoor[]">
+                                    <label for="i7" tabindex="13">Рэй Крок</label>     
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" class="i-6" id="checkbox_68" value="1" name="formDoor[]">
+                                    <label for="checkbox_68" tabindex="14">Братья Дик и Мак Макдоналд</label>     
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" class="i-6" id="checkbox_170" value="0" name="formDoor[]">
+                                    <label for="checkbox_170" tabindex="14">Клинт Иствуд</label>     
+                                </div>
+                                <div class="out-block out-6"></div>
+                            </section>
+                       </td>     
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <div class="dsw">
+            <button class="b-6" tabindex="11" id="btn-1" type="submit" name="formSubmit">Отправить</button>
+        </div>  
+    </form>
+    <script>
+        /* Главный скрипт формы (опросника) */
+
+const form = document.querySelector('#form')
+form.addEventListener('submit', onSubmit)
+
+function onSubmit (event) {
+event.preventDefault()
+
+let listCheckbox = document.querySelectorAll('.i-6')
+listCheckbox = [...listCheckbox]
+
+
+// Проверяем выбран ли хотябы один ответ
+if (!listCheckbox.some(checkbox => checkbox.checked)) {
+alert('Вы не выбрали ни одного ответа')
+}
+
+else{
+form.addEventListener('submit', onSubmit)
+alert('Вы подтверждаете действие?');
+}
+// Узнаем сколько всего правильных ответов
+const rightAnswersCount = listCheckbox.filter(checkbox => Number(checkbox.value) === 1).length
+
+// Узнаем сколько всего не правильных ответов
+const wrongAnswerCount = listCheckbox.length - rightAnswersCount
+
+// Узнаем количество правильных ответов
+const rightAnswers = listCheckbox.filter(checkbox => Number(checkbox.value) === 1 && checkbox.checked).length
+
+// Узнаем количество не правильных ответов
+const wrongAnswer = listCheckbox.filter(checkbox => Number(checkbox.value) === 0 && checkbox.checked).length
+
+// Уведомляем пользователя
+alert(`Вы выбрали ${rightAnswers} вариантов из ${rightAnswersCount} правильных`);
+/*alert(`Вы ответили не правильно на ${wrongAnswer} из ${wrongAnswerCount}`)*/
+
+//Вывод ответа с процентами
+alert(`Процент правильных ответов: ${(rightAnswers / rightAnswersCount) * 100}`);
+/*alert(`Процент неправильных ответов: ${(wrongAnswer / wrongAnswerCount) * 100}`)*/
+
+}
+
+/* Скрипт правильных и неправильных ответов */
+let button = document.getElementById('btn-1');
+button.addEventListener('click', function(e) {
+document.querySelectorAll('.i-6').forEach(item => {
+let chekcbox = item.closest('div');
+if (item.checked && Number(item.value)) {
+chekcbox.classList.add("right");
+chekcbox.classList.remove("false");
+} else if (item.checked) {
+chekcbox.classList.add("false");
+chekcbox.classList.remove("right");
+} else {
+chekcbox.classList.remove("right");
+chekcbox.classList.remove("false");
+}
+})
+});
+
+    </script>
+</body>
+</html>
+
+<p>1. Что не входит в перечень требований к внешнему виду сотрудников?<br>
+    <input type = "radio" name=q1 onclick="qa.nowRight = 0">Фартук<br>
+    <input type = "radio" name=q1 onclick="qa.nowRight = 1">Кепка<br>
+    <input type = "radio" name=q1 onclick="qa.nowRight = 0">Перчатки<br>
+</div>
+<div class = "vopros">
+    <p>2. Чьи поручения выполнять необязательно?<br>
+     <input type = "radio" name=q1 onclick="qa.nowRight = 1">Случайный посетитель<br>
+     <input type = "radio" name=q1 onclick="qa.nowRight = 0">Начальство<br>
+     <input type = "radio" name=q1 onclick="qa.nowRight = 0">Старший смены<br>
+ </div>
+ <div class = "vopros">
+    <p>3. Можно ли кидаться товаром?<br>
+     <input type = "radio" name=q1 onclick="qa.nowRight = 0">Да!<br>
+     <input type = "radio" name=q1 onclick="qa.nowRight = 1">Нет<br>
+     <input type = "radio" name=q1 onclick="qa.nowRight = 0">Конечно! Всегда так делаю!<br>
+ </div>
+ <div class = "vopros">
+    <p>Данный тест состроит из 10 вопросов. Если вы готовы - нажмите "Готов" и "Далее"<br>
+         <input type = "radio" name=q1 onclick="qa.nowRight = 0">Готов!<br>
+         <input type = "radio" name=q1 onclick="qa.nowRight = 0">Не совсем...<br>
+      </div>
